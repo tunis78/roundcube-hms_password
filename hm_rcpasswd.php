@@ -3,10 +3,10 @@
 /**
  * hMailserver remote password changer
  *
- * @version 1.2
+ * @version 1.3
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
- * Copyright (C) 2017, Andreas Tunberg
+ * Copyright (C) 2026, Andreas Tunberg
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,12 +61,9 @@ function saveNewPassword($email,$oldpassword,$newpassword)
     catch (Exception $e) {
         sendResult(trim(strip_tags($e->getMessage())),HMS_ERROR);
     }
-    $temparr = explode('@', $email);
-    $domain = $temparr[1];
-    $obApp->Authenticate($email, $oldpassword);
+
     try {
-        $obDomain  = $obApp->Domains->ItemByName($domain);
-        $obAccount = $obDomain->Accounts->ItemByAddress($email);
+        $obAccount = $obApp->Authenticate($email, $oldpassword);
         $obAccount->Password = $newpassword;
         $obAccount->Save();
     }

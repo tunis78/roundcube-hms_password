@@ -3,10 +3,10 @@
 /**
  * hMailserver remote password driver
  *
- * @version 1.1
+ * @version 1.2
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
- * Copyright (C) 2017, Andreas Tunberg
+ * Copyright (C) 2026, Andreas Tunberg
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,11 +39,7 @@ class rcube_hmail_remote_password
         }
 
         $username = $rcmail->user->data['username'];
-        if (strstr($username,'@')){
-            $temparr = explode('@', $username);
-            $domain = $temparr[1];
-        }
-        else {
+        if (!strstr($username,'@')){
             $domain = $rcmail->config->get('username_domain',false);
             if (!$domain) {
                 rcube::write_log('errors','Plugin password (hmail remote driver): $config[\'username_domain\'] is not defined.');

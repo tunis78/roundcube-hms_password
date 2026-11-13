@@ -26,6 +26,10 @@ See config.inc.php.dist file for more info under hMail remote Driper options.
 
 Changelog
 ---------
+Version 1.3 (2026-11-13)
+- Cleaned the drivers code
+- Fix to work with domainalias
+
 Version 1.2 (2020-06-10)
 - First release on github
 
